@@ -13,192 +13,182 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#07070f;--surface:#111120;--surface2:#181830;--surface3:#1e1e3a;
-  --border:rgba(120,120,255,0.13);--accent:#5b6af7;--accent2:#a78bfa;
-  --accent3:#38bdf8;--gold:#f59e0b;--green:#34d399;--red:#f87171;
-  --text:#e8e8f4;--text2:#9090b8;--text3:#5a5a80;
+  --bg:#07070f;--s1:#111120;--s2:#181830;--s3:#1e1e3a;
+  --br:rgba(120,120,255,0.13);--ac:#5b6af7;--ac2:#a78bfa;--ac3:#38bdf8;
+  --green:#34d399;--text:#e8e8f4;--t2:#9090b8;--t3:#5a5a80;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-
-/* noise */
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:.5;}
-.amb{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;animation:drift 22s ease-in-out infinite;}
-.amb1{width:500px;height:500px;background:rgba(91,106,247,0.06);top:-150px;left:-80px;}
-.amb2{width:400px;height:400px;background:rgba(167,139,250,0.045);bottom:-150px;right:-80px;animation-delay:-11s;}
-@keyframes drift{0%,100%{transform:translate(0,0)}40%{transform:translate(25px,-18px)}70%{transform:translate(-15px,22px)}}
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:.45;}
+.amb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;animation:drift 22s ease-in-out infinite;}
+.a1{width:480px;height:480px;background:rgba(91,106,247,0.06);top:-140px;left:-80px;}
+.a2{width:380px;height:380px;background:rgba(167,139,250,0.045);bottom:-140px;right:-80px;animation-delay:-11s;}
+@keyframes drift{0%,100%{transform:translate(0,0)}40%{transform:translate(22px,-16px)}70%{transform:translate(-14px,20px)}}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:100;background:rgba(7,7,15,0.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
-.hdr{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 14px;}
-.logo{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;color:inherit;}
-.logo-ic{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#5b6af7,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 0 18px rgba(91,106,247,0.38);flex-shrink:0;}
-.logo-txt{background:linear-gradient(90deg,#5b6af7,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hdr-r{display:flex;align-items:center;gap:9px;}
-.live-ind{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--green);display:flex;align-items:center;gap:4px;}
-.live-ind b{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;display:inline-block;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-.btn-ref{background:rgba(91,106,247,0.14);border:1px solid rgba(91,106,247,0.28);color:var(--accent);border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif;transition:background .2s;}
-.btn-ref:hover{background:rgba(91,106,247,0.24);}
-.btn-ref.spin svg{animation:rot .75s linear infinite;}
+header{position:sticky;top:0;z-index:100;background:rgba(7,7,15,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--br);}
+.hdr{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px;padding:0 14px;}
+.logo{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:-.02em;text-decoration:none;color:inherit;}
+.li{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#5b6af7,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 0 16px rgba(91,106,247,0.36);flex-shrink:0;}
+.lt{background:linear-gradient(90deg,#5b6af7,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hr{display:flex;align-items:center;gap:9px;}
+.live{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--green);display:flex;align-items:center;gap:4px;}
+.live span{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;display:inline-block;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.btnr{background:rgba(91,106,247,0.14);border:1px solid rgba(91,106,247,0.26);color:var(--ac);border-radius:8px;padding:6px 12px;font-size:.77rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.btnr:hover{background:rgba(91,106,247,0.22);}
+.btnr.sp svg{animation:rot .75s linear infinite;}
 @keyframes rot{to{transform:rotate(360deg)}}
 
 /* TICKER */
-.tkr{background:linear-gradient(90deg,rgba(91,106,247,0.11),rgba(167,139,250,0.07));border-bottom:1px solid var(--border);overflow:hidden;white-space:nowrap;height:28px;position:relative;}
+.tkr{background:linear-gradient(90deg,rgba(91,106,247,0.10),rgba(167,139,250,0.07));border-bottom:1px solid var(--br);overflow:hidden;white-space:nowrap;height:27px;position:relative;}
 .tkr::before,.tkr::after{content:'';position:absolute;top:0;bottom:0;width:44px;z-index:2;}
 .tkr::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
 .tkr::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent);}
-.tkr-t{display:inline-flex;align-items:center;height:100%;animation:scroll 50s linear infinite;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--text2);}
-.tkr-t:hover{animation-play-state:paused;}
+.tkrt{display:inline-flex;align-items:center;height:100%;animation:scroll 50s linear infinite;font-family:'DM Mono',monospace;font-size:.67rem;color:var(--t2);}
+.tkrt:hover{animation-play-state:paused;}
 .ti{display:inline-flex;align-items:center;gap:5px;padding:0 22px;}
-.td{width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.65;}
+.td{width:4px;height:4px;border-radius:50%;background:var(--ac);opacity:.6;}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* MAIN */
-main{max-width:860px;margin:0 auto;padding:20px 13px 90px;position:relative;z-index:1;}
-
-/* SECTION HEADER */
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;}
-.st{font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);display:flex;align-items:center;gap:7px;}
-.st .d{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 7px var(--accent);animation:blink 2s ease-in-out infinite;}
-.ts{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--text3);}
+main{max-width:860px;margin:0 auto;padding:18px 13px 80px;position:relative;z-index:1;}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.st{font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;color:var(--t2);display:flex;align-items:center;gap:7px;}
+.st .d{width:5px;height:5px;border-radius:50%;background:var(--ac);box-shadow:0 0 6px var(--ac);animation:blink 2s infinite;}
+.ts{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--t3);}
 
 /* PILLS */
-.pl{font-family:'DM Mono',monospace;font-size:.62rem;padding:2px 8px;border-radius:20px;font-weight:500;display:inline-block;}
-.pr{background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.2);}
-.pp{background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.2);}
-.ps{background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.2);}
-.pb{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2);}
-.po{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.2);}
-.pt{background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
+.pl{font-family:'DM Mono',monospace;font-size:.6rem;padding:2px 7px;border-radius:20px;font-weight:500;display:inline-block;}
+.pr{background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.18);}
+.pp{background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.18);}
+.ps{background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.18);}
+.pb{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.18);}
+.po{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.18);}
+.pt{background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.18);}
 
-/* FEATURED CARD */
-.fc{background:linear-gradient(135deg,rgba(91,106,247,.09),rgba(15,15,28,.95));border:1px solid rgba(91,106,247,.22);border-radius:15px;padding:20px;margin-bottom:9px;cursor:pointer;transition:all .25s;animation:fu .45s ease both;position:relative;overflow:hidden;}
-.fc:active{transform:scale(.985);}
-.fc:hover{border-color:rgba(91,106,247,.38);box-shadow:0 8px 36px rgba(91,106,247,.11);}
-.fc-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(91,106,247,.14);border:1px solid rgba(91,106,247,.28);color:var(--accent2);border-radius:5px;padding:3px 9px;font-family:'DM Mono',monospace;font-size:.62rem;margin-bottom:11px;}
-.fc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.12rem;line-height:1.33;margin-bottom:9px;}
-.fc-desc{color:var(--text2);font-size:.83rem;line-height:1.62;margin-bottom:13px;}
-.fc-tap{display:flex;align-items:center;justify-content:space-between;}
-.meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
-.ms{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);opacity:.8;}
-.mt{font-size:.68rem;color:var(--text3);}
-.tap-hint{font-size:.7rem;color:var(--accent2);opacity:.6;display:flex;align-items:center;gap:3px;}
+/* FEATURED */
+.fc{background:linear-gradient(135deg,rgba(91,106,247,.08),rgba(14,14,26,.96));border:1px solid rgba(91,106,247,.2);border-radius:14px;padding:19px;margin-bottom:8px;cursor:pointer;transition:border-color .22s,box-shadow .22s;animation:fu .4s ease both;user-select:none;}
+.fc:active{opacity:.88;}
+.fc-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(91,106,247,.13);border:1px solid rgba(91,106,247,.26);color:var(--ac2);border-radius:5px;padding:2px 9px;font-family:'DM Mono',monospace;font-size:.6rem;margin-bottom:10px;}
+.fc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;line-height:1.33;margin-bottom:9px;}
+.fc-desc{color:var(--t2);font-size:.82rem;line-height:1.62;margin-bottom:12px;}
+.fc-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.fc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.ms{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--ac);opacity:.8;}
+.mt{font-size:.66rem;color:var(--t3);}
+.read-hint{font-size:.68rem;color:var(--ac2);opacity:.65;display:flex;align-items:center;gap:3px;}
 
-/* NEWS LIST — single column full width cards */
-.nl{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
-.nc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 16px;cursor:pointer;transition:all .22s;animation:fu .45s ease both;position:relative;overflow:hidden;}
-.nc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:linear-gradient(180deg,var(--accent),var(--accent2));opacity:0;transition:opacity .22s;}
-.nc:active{transform:scale(.988);}
-.nc:hover{border-color:rgba(91,106,247,.22);box-shadow:0 4px 22px rgba(0,0,0,.25);}
+/* NEWS LIST */
+.nl{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.nc{background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:14px 15px;cursor:pointer;transition:border-color .2s,background .2s;animation:fu .4s ease both;position:relative;overflow:hidden;user-select:none;}
+.nc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--ac),var(--ac2));opacity:0;transition:opacity .2s;}
+.nc:active{opacity:.85;}
+.nc:hover{border-color:rgba(91,106,247,.2);}
 .nc:hover::before{opacity:1;}
-.nc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:7px;}
-.nc-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.9rem;line-height:1.38;flex:1;}
-.nc-arr{font-size:.85rem;color:var(--accent2);opacity:.5;flex-shrink:0;margin-top:1px;transition:opacity .2s,transform .2s;}
-.nc:hover .nc-arr{opacity:1;transform:translateX(2px);}
-.nc-desc{font-size:.78rem;color:var(--text2);line-height:1.58;margin-bottom:8px;}
-.nc-foot{display:flex;align-items:center;gap:8px;}
-.nc-src{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--accent);opacity:.75;}
-.nc-time{font-size:.65rem;color:var(--text3);margin-left:auto;}
+.nc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:6px;}
+.nc-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.88rem;line-height:1.37;flex:1;}
+.arr{color:var(--ac2);opacity:.5;font-size:.85rem;flex-shrink:0;margin-top:1px;}
+.nc-desc{font-size:.77rem;color:var(--t2);line-height:1.56;margin-bottom:7px;}
+.nc-foot{display:flex;align-items:center;gap:7px;}
+.nc-src{font-family:'DM Mono',monospace;font-size:.61rem;color:var(--ac);opacity:.75;}
+.nc-time{font-size:.63rem;color:var(--t3);margin-left:auto;}
 
 /* DEV CARDS */
-.dc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
-.dc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:13px 15px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:all .22s;animation:fu .45s ease both;}
-.dc:active{transform:scale(.988);}
-.dc:hover{border-color:rgba(91,106,247,.2);background:var(--surface2);}
-.dc-ic{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;}
-.dc-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.86rem;line-height:1.33;margin-bottom:3px;}
-.dc-desc{font-size:.75rem;color:var(--text2);line-height:1.53;}
-.dc-src{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--accent);opacity:.65;margin-top:4px;}
+.dcl{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.dc{background:var(--s1);border:1px solid var(--br);border-radius:11px;padding:12px 14px;display:flex;gap:11px;align-items:flex-start;cursor:pointer;transition:border-color .2s,background .2s;animation:fu .4s ease both;user-select:none;}
+.dc:active{opacity:.85;}
+.dc:hover{border-color:rgba(91,106,247,.18);background:var(--s2);}
+.dc-ic{width:36px;height:36px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.dc-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;line-height:1.32;margin-bottom:3px;}
+.dc-desc{font-size:.74rem;color:var(--t2);line-height:1.52;}
+.dc-src{font-family:'DM Mono',monospace;font-size:.59rem;color:var(--ac);opacity:.6;margin-top:3px;}
 
 /* NEWSLETTER CARDS */
-.nlc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
-.nlc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:13px 15px;display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:inherit;transition:all .22s;animation:fu .45s ease both;}
-.nlc:active{transform:scale(.988);}
-.nlc:hover{border-color:rgba(91,106,247,.22);background:var(--surface2);}
+.nlcl{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.nlc{background:var(--s1);border:1px solid var(--br);border-radius:11px;padding:13px 14px;display:flex;gap:11px;align-items:flex-start;text-decoration:none;color:inherit;transition:border-color .2s,background .2s;animation:fu .4s ease both;}
+.nlc:active{opacity:.85;}
+.nlc:hover{border-color:rgba(91,106,247,.2);background:var(--s2);}
 .nlc-em{width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;background:rgba(91,106,247,.1);}
-.nlc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:3px;}
-.nlc-meta{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;}
-.nlc-sub{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--text3);}
-.nlc-desc{font-size:.75rem;color:var(--text2);line-height:1.55;}
-.nlc-arr{font-size:.8rem;color:var(--accent2);opacity:0;transition:opacity .2s;flex-shrink:0;align-self:center;margin-left:auto;}
+.nlc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.87rem;margin-bottom:3px;}
+.nlc-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;}
+.nlc-sub{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--t3);}
+.nlc-desc{font-size:.74rem;color:var(--t2);line-height:1.54;}
+.nlc-arr{font-size:.8rem;color:var(--ac2);opacity:0;transition:opacity .2s;flex-shrink:0;align-self:center;margin-left:auto;}
 .nlc:hover .nlc-arr{opacity:1;}
 
 /* SOURCES */
-.src-wrap{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px;}
-.src-chip{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:6px 11px;display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--text2);text-decoration:none;font-family:'DM Mono',monospace;transition:all .2s;}
-.src-chip:hover{border-color:rgba(91,106,247,.28);color:var(--text);}
-
-/* DETAIL SHEET */
-.sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;opacity:0;transition:opacity .28s;pointer-events:none;}
-.sheet-overlay.open{opacity:1;pointer-events:all;}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:301;background:var(--surface);border-top:1px solid var(--border);border-radius:20px 20px 0 0;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,1,.32,1);padding-bottom:env(safe-area-inset-bottom,20px);}
-.sheet.open{transform:translateY(0);}
-.sheet-handle{width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,.15);margin:12px auto 4px;}
-.sheet-inner{padding:16px 18px 24px;}
-.sheet-cat{margin-bottom:10px;}
-.sheet-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;line-height:1.35;margin-bottom:10px;}
-.sheet-meta{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
-.sheet-body{font-size:.85rem;color:var(--text2);line-height:1.75;}
-.sheet-body p{margin-bottom:11px;}
-.sheet-body strong{color:var(--text);}
-.sheet-body h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;color:var(--text);margin:16px 0 7px;}
-.sheet-loading{display:flex;align-items:center;gap:8px;color:var(--text2);font-size:.82rem;padding:10px 0;}
-.sheet-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.07);border:none;color:var(--text2);cursor:pointer;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.srcw{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;}
+.src{background:var(--s1);border:1px solid var(--br);border-radius:7px;padding:6px 10px;font-size:.7rem;color:var(--t2);text-decoration:none;font-family:'DM Mono',monospace;transition:all .18s;}
+.src:hover{border-color:rgba(91,106,247,.26);color:var(--text);}
 
 /* ASK PANEL */
-.ask-panel{background:linear-gradient(135deg,rgba(17,17,32,.96),rgba(12,12,24,.96));border:1px solid var(--border);border-radius:15px;padding:18px;margin-bottom:24px;}
-.ask-head{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:8px;margin-bottom:12px;}
-.claude-b{font-family:'DM Mono',monospace;font-size:.6rem;padding:2px 7px;border-radius:4px;background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.2);margin-left:auto;}
-#ask-brief{font-size:.81rem;color:var(--text2);line-height:1.72;}
-#ask-brief p{margin-bottom:7px;}
-#ask-brief strong{color:var(--text);}
-.ask-row{display:flex;gap:7px;margin-top:11px;}
-.ask-in{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;}
-.ask-in:focus{border-color:rgba(91,106,247,.38);}
-.ask-in::placeholder{color:var(--text3);}
-.ask-go{background:linear-gradient(135deg,#5b6af7,#a78bfa);border:none;border-radius:8px;padding:10px 14px;color:#fff;cursor:pointer;font-size:.88rem;flex-shrink:0;}
-.ask-resp{background:rgba(91,106,247,.05);border:1px solid rgba(91,106,247,.14);border-radius:8px;padding:12px;margin-top:9px;font-size:.8rem;color:var(--text2);line-height:1.68;display:none;}
-.ask-resp.show{display:block;animation:fu .28s ease;}
+.ap{background:linear-gradient(135deg,rgba(17,17,32,.96),rgba(11,11,22,.96));border:1px solid var(--br);border-radius:14px;padding:17px;margin-bottom:22px;}
+.ap-head{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px;margin-bottom:11px;}
+.cb{font-family:'DM Mono',monospace;font-size:.58rem;padding:2px 7px;border-radius:4px;background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.18);margin-left:auto;}
+#ab{font-size:.8rem;color:var(--t2);line-height:1.72;}
+#ab p{margin-bottom:7px;}
+#ab strong{color:var(--text);}
+.arow{display:flex;gap:7px;margin-top:10px;}
+.ain{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.81rem;outline:none;}
+.ain:focus{border-color:rgba(91,106,247,.36);}
+.ain::placeholder{color:var(--t3);}
+.ago{background:linear-gradient(135deg,#5b6af7,#a78bfa);border:none;border-radius:8px;padding:9px 13px;color:#fff;cursor:pointer;font-size:.86rem;flex-shrink:0;}
+.ar{background:rgba(91,106,247,.05);border:1px solid rgba(91,106,247,.13);border-radius:8px;padding:11px;margin-top:8px;font-size:.79rem;color:var(--t2);line-height:1.68;display:none;}
+.ar.show{display:block;animation:fu .25s ease;}
+
+/* ARTICLE BOTTOM SHEET */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:300;opacity:0;transition:opacity .26s;pointer-events:none;}
+.ov.on{opacity:1;pointer-events:all;}
+.sh{position:fixed;left:0;right:0;bottom:0;z-index:301;background:#0e0e1c;border-top:1px solid var(--br);border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.32,1);}
+.sh.on{transform:translateY(0);}
+.sh-handle{width:34px;height:4px;border-radius:2px;background:rgba(255,255,255,.13);margin:11px auto 2px;}
+.sh-inner{padding:14px 17px 32px;}
+.sh-close{position:absolute;top:12px;right:14px;background:rgba(255,255,255,.07);border:none;color:var(--t2);cursor:pointer;border-radius:50%;width:27px;height:27px;display:flex;align-items:center;justify-content:center;font-size:13px;z-index:2;}
+.sh-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;line-height:1.34;margin:10px 0 8px;}
+.sh-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.sh-body{font-size:.84rem;color:var(--t2);line-height:1.76;}
+.sh-body p{margin-bottom:10px;}
+.sh-body p:last-child{margin-bottom:0;}
+.sh-body strong{color:var(--text);}
+.sh-body h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--text);margin:14px 0 6px;}
+.sh-load{display:flex;align-items:center;gap:8px;color:var(--t2);font-size:.8rem;padding:8px 0;}
 
 /* TYPING */
 .ty{display:inline-flex;gap:4px;align-items:center;}
-.ty span{width:5px;height:5px;border-radius:50%;background:var(--accent2);animation:bn 1s infinite;}
+.ty span{width:4px;height:4px;border-radius:50%;background:var(--ac2);animation:bn 1s infinite;}
 .ty span:nth-child(2){animation-delay:.14s}.ty span:nth-child(3){animation-delay:.28s}
 @keyframes bn{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
 
-/* INSTALL BANNER */
-.ib{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(7,7,15,.96);backdrop-filter:blur(18px);border-top:1px solid var(--border);padding:12px 14px;display:flex;align-items:center;gap:11px;transform:translateY(100%);transition:transform .35s ease;}
-.ib.show{transform:translateY(0);}
-.ib-txt{flex:1;font-size:.78rem;color:var(--text2);}
-.ib-txt strong{color:var(--text);display:block;font-size:.83rem;}
-.ib-btn{background:linear-gradient(135deg,#5b6af7,#a78bfa);border:none;border-radius:8px;padding:8px 13px;color:#fff;font-weight:600;font-size:.78rem;cursor:pointer;white-space:nowrap;}
-.ib-x{background:none;border:none;color:var(--text2);cursor:pointer;font-size:17px;padding:3px;}
+/* INSTALL */
+.ib{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(7,7,15,.95);backdrop-filter:blur(16px);border-top:1px solid var(--br);padding:11px 14px;display:flex;align-items:center;gap:10px;transform:translateY(100%);transition:transform .32s;}
+.ib.on{transform:translateY(0);}
+.ib-t{flex:1;font-size:.77rem;color:var(--t2);}
+.ib-t strong{color:var(--text);display:block;font-size:.82rem;}
+.ib-btn{background:linear-gradient(135deg,#5b6af7,#a78bfa);border:none;border-radius:8px;padding:8px 12px;color:#fff;font-weight:600;font-size:.77rem;cursor:pointer;}
+.ib-x{background:none;border:none;color:var(--t2);cursor:pointer;font-size:17px;padding:3px;}
 
 /* SKELETON */
-.sk{background:linear-gradient(90deg,var(--surface) 25%,var(--surface2) 50%,var(--surface) 75%);background-size:200% 100%;animation:sh 1.4s infinite;border-radius:5px;}
-@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.skl{height:11px;margin-bottom:7px;}.skt{height:16px;width:78%;margin-bottom:9px;}
-
-@keyframes fu{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.sk{background:linear-gradient(90deg,var(--s1) 25%,var(--s2) 50%,var(--s1) 75%);background-size:200% 100%;animation:sm 1.4s infinite;border-radius:5px;}
+@keyframes sm{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skl{height:10px;margin-bottom:6px;}.skt{height:15px;width:76%;margin-bottom:8px;}
+@keyframes fu{from{opacity:0;transform:translateY(11px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
-<div class="amb amb1"></div>
-<div class="amb amb2"></div>
+<div class="amb a1"></div><div class="amb a2"></div>
 
-<!-- HEADER -->
 <header>
   <div class="hdr">
     <a class="logo" href="#">
-      <div class="logo-ic">🧠</div>
-      <span class="logo-txt">AIVerse</span><span style="color:var(--text2);font-weight:400;font-size:.85rem;margin-left:2px">News</span>
+      <div class="li">🧠</div>
+      <span class="lt">AIVerse</span><span style="color:var(--t2);font-weight:400;font-size:.84rem;margin-left:2px">News</span>
     </a>
-    <div class="hdr-r">
-      <div class="live-ind"><b></b>LIVE</div>
-      <button class="btn-ref" id="refBtn" onclick="loadNews()">
+    <div class="hr">
+      <div class="live"><span></span>LIVE</div>
+      <button class="btnr" id="refBtn" onclick="loadNews()">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
         Refresh
       </button>
@@ -206,8 +196,7 @@ main{max-width:860px;margin:0 auto;padding:20px 13px 90px;position:relative;z-in
   </div>
 </header>
 
-<!-- TICKER -->
-<div class="tkr"><div class="tkr-t" id="tkr">
+<div class="tkr"><div class="tkrt" id="tkr">
   <span class="ti"><span class="td"></span>Loading live AI intelligence...</span>
   <span class="ti"><span class="td"></span>Syncing frontier developments...</span>
   <span class="ti"><span class="td"></span>Loading live AI intelligence...</span>
@@ -215,94 +204,300 @@ main{max-width:860px;margin:0 auto;padding:20px 13px 90px;position:relative;z-in
 </div></div>
 
 <main>
-  <!-- TOP STORY -->
-  <div class="sh">
-    <div class="st"><span class="d"></span>Top Story</div>
-    <span id="upd" class="ts">Loading...</span>
-  </div>
-  <div id="feat">
-    <div class="fc"><div class="skt sk"></div><div class="skl sk" style="width:90%"></div><div class="skl sk" style="width:72%"></div></div>
-  </div>
+  <div class="sh"><div class="st"><span class="d"></span>Top Story</div><span id="upd" class="ts">Loading...</span></div>
+  <div id="feat"><div class="fc"><div class="skt sk"></div><div class="skl sk" style="width:88%"></div><div class="skl sk" style="width:70%"></div></div></div>
 
-  <!-- LATEST NEWS -->
-  <div class="sh" style="margin-top:24px">
-    <div class="st"><span class="d"></span>Latest News</div>
-    <span class="ts">TAP FOR FULL STORY</span>
-  </div>
+  <div class="sh" style="margin-top:22px"><div class="st"><span class="d"></span>Latest News</div><span class="ts">TAP FOR FULL STORY</span></div>
   <div class="nl" id="news-list">
-    <div class="nc"><div class="skt sk"></div><div class="skl sk"></div><div class="skl sk" style="width:60%"></div></div>
-    <div class="nc"><div class="skt sk"></div><div class="skl sk"></div><div class="skl sk" style="width:60%"></div></div>
+    <div class="nc"><div class="skt sk"></div><div class="skl sk"></div><div class="skl sk" style="width:58%"></div></div>
+    <div class="nc"><div class="skt sk"></div><div class="skl sk"></div><div class="skl sk" style="width:58%"></div></div>
     <div class="nc"><div class="skt sk"></div><div class="skl sk"></div></div>
   </div>
 
-  <!-- FRONTIER DEVELOPMENTS -->
-  <div class="sh">
-    <div class="st"><span class="d"></span>Frontier Developments</div>
-    <span class="ts">TAP TO EXPLORE</span>
-  </div>
-  <div class="dc-list" id="dev-list">
+  <div class="sh"><div class="st"><span class="d"></span>Frontier Developments</div><span class="ts">TAP TO EXPLORE</span></div>
+  <div class="dcl" id="dev-list">
     <div class="dc"><div class="dc-ic sk"></div><div style="flex:1"><div class="skt sk"></div><div class="skl sk"></div></div></div>
     <div class="dc"><div class="dc-ic sk"></div><div style="flex:1"><div class="skt sk"></div><div class="skl sk"></div></div></div>
   </div>
 
-  <!-- ASK AI -->
-  <div class="ask-panel">
-    <div class="ask-head">✨ AI Briefing Assistant <span class="claude-b">Claude</span></div>
-    <div id="ask-brief"><p>Your AI intelligence briefing is loading. Ask me anything about today's AI developments.</p></div>
-    <div class="ask-row">
-      <input class="ask-in" id="askIn" placeholder="Ask about any AI topic..." onkeydown="if(event.key==='Enter')doAsk()">
-      <button class="ask-go" onclick="doAsk()">➤</button>
+  <div class="ap">
+    <div class="ap-head">✨ AI Briefing Assistant <span class="cb">Claude</span></div>
+    <div id="ab"><p>Your AI intelligence briefing is loading. Ask me anything below.</p></div>
+    <div class="arow">
+      <input class="ain" id="askIn" placeholder="Ask about any AI topic..." onkeydown="if(event.key==='Enter')doAsk()">
+      <button class="ago" onclick="doAsk()">➤</button>
     </div>
-    <div class="ask-resp" id="askResp"></div>
+    <div class="ar" id="askR"></div>
   </div>
 
-  <!-- FREE NEWSLETTERS -->
-  <div class="sh">
-    <div class="st"><span class="d"></span>Best Free AI Newsletters</div>
-    <span class="ts">TAP TO SUBSCRIBE</span>
-  </div>
-  <div class="nlc-list" id="nl-list"></div>
+  <div class="sh"><div class="st"><span class="d"></span>Best Free AI Newsletters</div><span class="ts">TAP TO SUBSCRIBE</span></div>
+  <div class="nlcl" id="nl-list"></div>
 
-  <!-- SOURCES -->
-  <div class="sh">
-    <div class="st"><span class="d"></span>Top Sources</div>
-  </div>
-  <div class="src-wrap">
-    <a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" class="src-chip">🔬 MIT Tech Review</a>
-    <a href="https://venturebeat.com/category/ai/" target="_blank" class="src-chip">⚡ VentureBeat</a>
-    <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" class="src-chip">🟢 TechCrunch AI</a>
-    <a href="https://importai.substack.com/" target="_blank" class="src-chip">🧪 Import AI</a>
-    <a href="https://www.deeplearning.ai/the-batch/" target="_blank" class="src-chip">📚 The Batch</a>
-    <a href="https://tldr.tech/ai" target="_blank" class="src-chip">⚡ TLDR AI</a>
-    <a href="https://www.therundown.ai/" target="_blank" class="src-chip">📰 The Rundown</a>
+  <div class="sh"><div class="st"><span class="d"></span>Top Sources</div></div>
+  <div class="srcw">
+    <a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" class="src">🔬 MIT Tech Review</a>
+    <a href="https://venturebeat.com/category/ai/" target="_blank" class="src">⚡ VentureBeat</a>
+    <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" class="src">🟢 TechCrunch AI</a>
+    <a href="https://importai.substack.com/" target="_blank" class="src">🧪 Import AI</a>
+    <a href="https://www.deeplearning.ai/the-batch/" target="_blank" class="src">📚 The Batch</a>
+    <a href="https://tldr.tech/ai" target="_blank" class="src">⚡ TLDR AI</a>
   </div>
 </main>
 
-<!-- ARTICLE DETAIL SHEET -->
-<div class="sheet-overlay" id="sOverlay" onclick="closeSheet()"></div>
-<div class="sheet" id="sheet">
-  <button class="sheet-close" onclick="closeSheet()">✕</button>
-  <div class="sheet-handle"></div>
-  <div class="sheet-inner">
-    <div id="sheet-cat" class="sheet-cat"></div>
-    <div class="sheet-title" id="sheet-title"></div>
-    <div class="sheet-meta" id="sheet-meta"></div>
-    <div class="sheet-body" id="sheet-body">
-      <div class="sheet-loading"><div class="ty"><span></span><span></span><span></span></div>&nbsp;Loading full article...</div>
-    </div>
+<!-- ARTICLE SHEET -->
+<div class="ov" id="ov"></div>
+<div class="sh" id="sheet">
+  <button class="sh-close" id="shClose">✕</button>
+  <div class="sh-handle"></div>
+  <div class="sh-inner">
+    <div id="sh-cat"></div>
+    <div class="sh-title" id="sh-title"></div>
+    <div class="sh-meta" id="sh-meta"></div>
+    <div class="sh-body" id="sh-body"><div class="sh-load"><div class="ty"><span></span><span></span><span></span></div>&nbsp;Loading full story...</div></div>
   </div>
 </div>
 
-<!-- INSTALL BANNER -->
+<!-- INSTALL -->
 <div class="ib" id="ib">
-  <span style="font-size:24px">📲</span>
-  <div class="ib-txt"><strong>Add AIVerse to Home Screen</strong>Live AI briefings, always one tap away</div>
+  <span style="font-size:23px">📲</span>
+  <div class="ib-t"><strong>Add AIVerse to Home Screen</strong>Live AI briefings, one tap away</div>
   <button class="ib-btn" id="ibBtn">Install</button>
-  <button class="ib-x" onclick="document.getElementById('ib').classList.remove('show')">✕</button>
+  <button class="ib-x" onclick="document.getElementById('ib').classList.remove('on')">✕</button>
 </div>
 
 <script>
-// ── PWA ─────────────────────────────────────────────────────────
+// ── DATA STORE — avoids all inline onclick quoting issues ─────────
+const STORE = {};
+let storeIdx = 0;
+function store(obj) {
+  const id = 'i' + (++storeIdx);
+  STORE[id] = obj;
+  return id;
+}
+
+// ── SHEET ────────────────────────────────────────────────────────
+const ov    = document.getElementById('ov');
+const sheet = document.getElementById('sheet');
+const shClose = document.getElementById('shClose');
+
+function openSheet(id) {
+  const item = STORE[id];
+  if (!item) return;
+  document.getElementById('sh-cat').innerHTML  = `<span class="pl ${pc(item.category)}">${pl(item.category)}</span>`;
+  document.getElementById('sh-title').textContent = item.title;
+  document.getElementById('sh-meta').innerHTML  = `<span class="ms">${item.source}</span><span class="mt">${item.timeAgo}</span>`;
+  document.getElementById('sh-body').innerHTML  = '<div class="sh-load"><div class="ty"><span></span><span></span><span></span></div>&nbsp;&nbsp;Generating full article...</div>';
+  ov.classList.add('on');
+  sheet.classList.add('on');
+  document.body.style.overflow = 'hidden';
+  fetchArticle(item.title, item.description, item.category);
+}
+function closeSheet() {
+  ov.classList.remove('on');
+  sheet.classList.remove('on');
+  document.body.style.overflow = '';
+}
+ov.addEventListener('click', closeSheet);
+shClose.addEventListener('click', closeSheet);
+
+async function fetchArticle(title, desc, category) {
+  try {
+    const text = await claude(
+      `You are AIVerse News, an AI journalist. Today is ${new Date().toDateString()}. Write an engaging news article. Return ONLY plain HTML using only <p>, <strong>, <h3> tags — nothing else, no markdown, no backticks.`,
+      `Write a 4-paragraph news article on this AI story:
+Title: "${title}"
+Summary: "${desc}"
+Category: ${category}
+
+Para 1 — Key news and significance.
+Para 2 — Background and current AI landscape context.
+Para 3 — Technical or business details, real players.
+Para 4 — Impact for builders/enterprises and what to watch next.
+
+Be specific and insightful. Reference real companies and AI systems.`, 700);
+    document.getElementById('sh-body').innerHTML = text.replace(/```html|```/g,'').trim();
+  } catch(e) {
+    document.getElementById('sh-body').innerHTML = `<p>${desc}</p><p>Full article unavailable. Check the sources section for the latest coverage.</p>`;
+  }
+}
+
+// ── CLAUDE API ───────────────────────────────────────────────────
+async function claude(sys, prompt, mt) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json', 'anthropic-dangerous-direct-browser-access':'true' },
+    body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens: mt||800,
+      system: sys, messages: [{ role:'user', content: prompt }] })
+  });
+  if (!r.ok) throw new Error('API '+r.status);
+  const d = await r.json();
+  if (!d.content?.[0]?.text) throw new Error('Empty');
+  return d.content[0].text;
+}
+
+function parseJ(raw) {
+  if (!raw) throw new Error('Empty');
+  try { return JSON.parse(raw); } catch(_) {}
+  let s = raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
+  try { return JSON.parse(s); } catch(_) {}
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if (a !== -1 && b !== -1) { try { return JSON.parse(s.slice(a,b+1)); } catch(_) {} }
+  throw new Error('Cannot parse');
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────
+const CATS = { research:'pr', product:'pp', safety:'ps', business:'pb', open:'po', tools:'pt' };
+const CATL = { research:'Research', product:'Product', safety:'Safety', business:'Business', open:'Open Source', tools:'Tools' };
+function pc(c) { return CATS[c]||'pr'; }
+function pl(c) { return CATL[c]||'AI'; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── RENDER ───────────────────────────────────────────────────────
+function renderFeat(f) {
+  if (!f) return;
+  const id = store({ title: f.title, description: f.description, category: f.category, source: f.source, timeAgo: f.timeAgo });
+  document.getElementById('feat').innerHTML = `
+  <div class="fc" data-id="${id}">
+    <div class="fc-badge">⭐ Featured Story</div>
+    <div class="fc-title">${esc(f.title)}</div>
+    <div class="fc-desc">${esc(f.description)}</div>
+    <div class="fc-foot">
+      <div class="fc-meta">
+        <span class="ms">${esc(f.source)}</span>
+        <span class="mt">${esc(f.timeAgo)}</span>
+        <span class="pl ${pc(f.category)}">${pl(f.category)}</span>
+      </div>
+      <div class="read-hint">Read full story →</div>
+    </div>
+  </div>`;
+  document.querySelector('.fc[data-id]').addEventListener('click', function(){ openSheet(this.dataset.id); });
+}
+
+function renderNews(news) {
+  document.getElementById('news-list').innerHTML = news.map((n,i) => {
+    const id = store({ title: n.title, description: n.description, category: n.category, source: n.source, timeAgo: n.timeAgo });
+    return `<div class="nc" data-id="${id}" style="animation-delay:${i*.05}s">
+      <div class="nc-row"><div class="nc-title">${esc(n.title)}</div><div class="arr">→</div></div>
+      <div class="nc-desc">${esc(n.description)}</div>
+      <div class="nc-foot">
+        <span class="pl ${pc(n.category)}">${pl(n.category)}</span>
+        <span class="nc-src">${esc(n.source)}</span>
+        <span class="nc-time">${esc(n.timeAgo)}</span>
+      </div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('.nc[data-id]').forEach(el => {
+    el.addEventListener('click', function(){ openSheet(this.dataset.id); });
+  });
+}
+
+function renderDevs(devs) {
+  document.getElementById('dev-list').innerHTML = devs.map((d,i) => {
+    const id = store({ title: d.title, description: d.description, category: 'research', source: d.source, timeAgo: 'Today' });
+    return `<div class="dc" data-id="${id}" style="animation-delay:${i*.06}s">
+      <div class="dc-ic" style="background:${d.bg||'rgba(91,106,247,0.12)'}">${d.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="dc-title">${esc(d.title)}</div>
+        <div class="dc-desc">${esc(d.description)}</div>
+        <div class="dc-src">${esc(d.source)}</div>
+      </div>
+      <div style="color:var(--ac2);opacity:.4;font-size:.8rem;flex-shrink:0;align-self:center">→</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('.dc[data-id]').forEach(el => {
+    el.addEventListener('click', function(){ openSheet(this.dataset.id); });
+  });
+}
+
+function setTicker(items) {
+  if (!items.length) return;
+  const d = [...items,...items];
+  document.getElementById('tkr').innerHTML = d.map(t=>`<span class="ti"><span class="td"></span>${esc(t)}</span>`).join('');
+}
+
+// ── LOAD NEWS ────────────────────────────────────────────────────
+let cache = null;
+async function loadNews() {
+  const btn = document.getElementById('refBtn');
+  btn.classList.add('sp');
+  try {
+    const raw = await claude(
+      `You are an AI news curator. Today is ${new Date().toDateString()}. Return ONLY a raw JSON object. Start with { end with }. No markdown, no backticks, no explanation whatsoever.`,
+      `Return this exact JSON structure with real current AI news:
+{"featured":{"title":"...","description":"2-3 sentences about the most important AI development today","category":"research","source":"source name","timeAgo":"X hours ago"},"news":[{"title":"...","description":"1-2 sentences","category":"product","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"open","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"safety","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"business","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"tools","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"research","source":"...","timeAgo":"..."}],"developments":[{"icon":"🤖","title":"...","description":"1-2 sentences","source":"...","bg":"rgba(91,106,247,0.12)"},{"icon":"🎯","title":"...","description":"...","source":"...","bg":"rgba(167,139,250,0.12)"},{"icon":"🌐","title":"...","description":"...","source":"...","bg":"rgba(56,189,248,0.12)"},{"icon":"🔒","title":"...","description":"...","source":"...","bg":"rgba(248,113,113,0.12)"},{"icon":"⚡","title":"...","description":"...","source":"...","bg":"rgba(52,211,153,0.12)"}],"ticker":["h1","h2","h3","h4","h5","h6","h7","h8"]}`, 2000);
+    const data = parseJ(raw);
+    cache = data;
+    renderFeat(data.featured);
+    renderNews(data.news || []);
+    renderDevs(data.developments || []);
+    setTicker(data.ticker || []);
+    document.getElementById('upd').textContent = 'Updated ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    genBriefing(data);
+  } catch(e) {
+    console.warn('Using cached data:', e.message);
+    document.getElementById('upd').textContent = 'Cached · tap Refresh';
+  }
+  btn.classList.remove('sp');
+}
+
+async function genBriefing(data) {
+  const titles = [data.featured?.title,...(data.news||[]).map(n=>n.title)].filter(Boolean).slice(0,5).join('; ');
+  const bc = document.getElementById('ab');
+  bc.innerHTML = '<div class="ty"><span></span><span></span><span></span></div>';
+  try {
+    const t = await claude(
+      `You are AIVerse News. Today ${new Date().toDateString()}. Write for an AI product builder. Return ONLY HTML with <p> and <strong> tags.`,
+      `Headlines: "${titles}". Write a 2-paragraph briefing connecting the AI trends. No preamble.`, 320);
+    bc.innerHTML = t.replace(/```html|```/g,'').trim();
+  } catch {
+    bc.innerHTML = '<p><strong>AI is moving fast today.</strong> Tap any story card above to read the full article — powered by Claude.</p>';
+  }
+}
+
+// ── ASK ──────────────────────────────────────────────────────────
+async function doAsk() {
+  const inp = document.getElementById('askIn');
+  const q = inp?.value?.trim();
+  if (!q) return;
+  const resp = document.getElementById('askR');
+  resp.className = 'ar show';
+  resp.innerHTML = '<div class="ty"><span></span><span></span><span></span></div>';
+  inp.disabled = true;
+  const ctx = cache ? `Today's AI headlines: ${[cache.featured?.title,...(cache.news||[]).map(n=>n.title)].filter(Boolean).join('; ')}.` : '';
+  try {
+    const t = await claude(`You are AIVerse News AI. ${new Date().toDateString()}. ${ctx} Answer in 2-3 sentences. Plain text only.`, q, 280);
+    resp.innerHTML = t;
+  } catch { resp.innerHTML = 'Connection issue — please try again.'; }
+  inp.disabled = false; inp.value = '';
+}
+window.doAsk = doAsk;
+window.loadNews = loadNews;
+
+// ── NEWSLETTERS ──────────────────────────────────────────────────
+const NL = [
+  {e:'⚡',n:'Techpresso',tag:'Daily · Free',tc:'pb',desc:'5-min daily read by 500K+ at OpenAI, Apple, Nvidia & Google. Best signal-to-noise ratio of any free AI daily.',url:'https://dupple.com/techpresso',sub:'500K+ readers'},
+  {e:'📰',n:'The Rundown AI',tag:'Daily · Free',tc:'pr',desc:"World's largest AI newsletter, 2M+ subscribers with a 50% open rate. Covers launches, tools, and tutorials daily.",url:'https://www.therundown.ai/',sub:'2M+ subscribers'},
+  {e:'🚀',n:'Superhuman AI',tag:'Daily · Free',tc:'po',desc:'"3 minutes a day" format. 1.5M+ subscribers. Practical workflows, prompt tips, and tool comparisons for busy professionals.',url:'https://www.superhuman.ai/',sub:'1.5M+ subscribers'},
+  {e:'⚡',n:'TLDR AI',tag:'Daily · Free',tc:'pr',desc:'Best free daily for developers & ML engineers. 1.25M+ subscribers covering technical research and engineering.',url:'https://tldr.tech/ai',sub:'1.25M+ subscribers'},
+  {e:'📚',n:'The Batch — Andrew Ng',tag:'Weekly · Free',tc:'pp',desc:'Benchmark weekly by DeepLearning.AI. "Letters from Andrew Ng" is the most-cited column in any AI newsletter.',url:'https://www.deeplearning.ai/the-batch/',sub:'DeepLearning.AI'},
+  {e:'🧪',n:'Import AI — Jack Clark',tag:'Weekly · Free',tc:'ps',desc:'By Anthropic co-founder. Deep research, policy analysis, paper breakdowns and geopolitical AI framing.',url:'https://importai.substack.com/',sub:'116K+ subscribers'},
+  {e:'🏗️',n:"Ben's Bites",tag:'Weekly · Free',tc:'po',desc:'Founder and builder lens. Applied AI, product launches, and the "wrapper vs. moat" debate for the AI startup ecosystem.',url:'https://bensbites.com/',sub:'163K+ subscribers'},
+  {e:'🌐',n:'The Atlas — GenAI.Works',tag:'Biweekly · Free',tc:'pt',desc:'Largest AI newsletter on LinkedIn with 3M+ readers. By Steve Nouri. Trusted by enterprise executives and independent builders.',url:'https://genai.works',sub:'3M+ LinkedIn readers'},
+  {e:'🔬',n:'Ahead of AI',tag:'Weekly · Free',tc:'pr',desc:'By Sebastian Raschka. Deep LLM architecture dives. Best newsletter for understanding how frontier models are built.',url:'https://magazine.sebastianraschka.com/',sub:'189K+ subscribers'},
+  {e:'🎙️',n:'Latent Space',tag:'Weekly · Free',tc:'pr',desc:'AI engineering newsletter and podcast. 200K+ subscribers. Production tradeoffs and AI lab research analysis for practitioners.',url:'https://www.latent.space/',sub:'200K+ subscribers'},
+];
+document.getElementById('nl-list').innerHTML = NL.map((n,i) => `
+  <a href="${n.url}" target="_blank" class="nlc" style="animation-delay:${i*.04}s">
+    <div class="nlc-em">${n.e}</div>
+    <div style="flex:1;min-width:0">
+      <div class="nlc-name">${n.n}</div>
+      <div class="nlc-row"><span class="pl ${n.tc}" style="font-size:.58rem;padding:1px 6px">${n.tag}</span><span class="nlc-sub">${n.sub}</span></div>
+      <div class="nlc-desc">${n.desc}</div>
+    </div>
+    <div class="nlc-arr">→</div>
+  </a>`).join('');
+
+// ── PWA ──────────────────────────────────────────────────────────
 (function(){
   function gi(s){
     const c=document.createElement('canvas');c.width=c.height=s;
@@ -323,244 +518,28 @@ main{max-width:860px;margin:0 auto;padding:20px 13px 90px;position:relative;z-in
   const mf={name:"AIVerse News",short_name:"AIVerse",description:"Real-time AI intelligence briefings",start_url:".",display:"standalone",background_color:"#07070f",theme_color:"#07070f",orientation:"portrait",categories:["news","technology"],icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any maskable"},{src:i512,sizes:"512x512",type:"image/png",purpose:"any maskable"}]};
   document.getElementById('pwa-manifest').href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:'application/json'}));
   let dp=null;
-  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;setTimeout(()=>document.getElementById('ib').classList.add('show'),4000);});
-  document.getElementById('ibBtn').onclick=async()=>{if(!dp)return;dp.prompt();const{outcome}=await dp.userChoice;if(outcome==='accepted')document.getElementById('ib').classList.remove('show');};
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;setTimeout(()=>document.getElementById('ib').classList.add('on'),4000);});
+  document.getElementById('ibBtn').onclick=async()=>{if(!dp)return;dp.prompt();const{outcome}=await dp.userChoice;if(outcome==='accepted')document.getElementById('ib').classList.remove('on');};
 })();
 
-// ── HELPERS ──────────────────────────────────────────────────────
-const CAT={research:'pr',product:'pp',safety:'ps',business:'pb',open:'po',tools:'pt'};
-const CAT_LABEL={research:'Research',product:'Product',safety:'Safety',business:'Business',open:'Open Source',tools:'Tools'};
-function pc(c){return CAT[c]||'pr';}
-function pl(c){return CAT_LABEL[c]||'AI';}
-
-function parseJSON(raw){
-  if(!raw) throw new Error('Empty');
-  try{return JSON.parse(raw);}catch(_){}
-  let s=raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
-  try{return JSON.parse(s);}catch(_){}
-  const a=s.indexOf('{'),b=s.lastIndexOf('}');
-  if(a!==-1&&b!==-1){try{return JSON.parse(s.slice(a,b+1));}catch(_){}}
-  throw new Error('Cannot parse JSON');
-}
-
-async function claude(sys,prompt,mt){
-  const r=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:mt||800,
-      system:sys,messages:[{role:'user',content:prompt}]})
-  });
-  if(!r.ok)throw new Error('API '+r.status);
-  const d=await r.json();
-  if(!d.content?.[0]?.text)throw new Error('Empty response');
-  return d.content[0].text;
-}
-
-// ── SHEET (ARTICLE DETAIL) ───────────────────────────────────────
-let sheetOpen=false;
-function openSheet(title,desc,category,source,timeAgo){
-  document.getElementById('sheet-cat').innerHTML=`<span class="pl ${pc(category)}">${pl(category)}</span>`;
-  document.getElementById('sheet-title').textContent=title;
-  document.getElementById('sheet-meta').innerHTML=`<span class="ms">${source}</span><span class="mt">${timeAgo}</span>`;
-  document.getElementById('sheet-body').innerHTML='<div class="sheet-loading"><div class="ty"><span></span><span></span><span></span></div>&nbsp;&nbsp;Loading full story...</div>';
-  document.getElementById('sOverlay').classList.add('open');
-  document.getElementById('sheet').classList.add('open');
-  document.body.style.overflow='hidden';
-  sheetOpen=true;
-  // Fetch full article content
-  fetchArticle(title,desc,category);
-}
-function closeSheet(){
-  document.getElementById('sOverlay').classList.remove('open');
-  document.getElementById('sheet').classList.remove('open');
-  document.body.style.overflow='';
-  sheetOpen=false;
-}
-async function fetchArticle(title,desc,category){
-  try{
-    const text=await claude(
-      `You are AIVerse News, an AI journalist. Today is ${new Date().toDateString()}. Write in a clear, engaging news style. Return ONLY plain HTML using only <p>, <strong>, <h3> tags — no other tags, no markdown, no backticks.`,
-      `Write a full 4-5 paragraph news article about this AI story:
-Title: "${title}"
-Summary: "${desc}"
-Category: ${category}
-
-Structure:
-- Opening paragraph: the key news and its significance
-- Background & context: why this matters in the current AI landscape  
-- Technical/business details: what's actually happening, key players
-- Impact & implications: what this means for builders, enterprises, or the field
-- What to watch: next developments to track
-
-Make it informative, insightful, and specific. Reference real companies, models, or researchers where relevant.`,700);
-    document.getElementById('sheet-body').innerHTML=text.replace(/```html|```/g,'').trim();
-  }catch(e){
-    document.getElementById('sheet-body').innerHTML=`<p>${desc}</p><p>Unable to load the full article at this time. Please check the sources section below for the latest coverage from top AI publications.</p>`;
-  }
-}
-
-// ── NEWS DATA ────────────────────────────────────────────────────
-let cache=null;
-
-async function loadNews(){
-  const btn=document.getElementById('refBtn');
-  btn.classList.add('spin');
-  try{
-    const raw=await claude(
-      `You are an AI news curator. Today is ${new Date().toDateString()}. Return ONLY a raw JSON object — no markdown, no backticks, no explanation. Start your response with { and end with }.`,
-      `Generate a fresh AI news briefing. Return ONLY this JSON structure exactly:
-{"featured":{"title":"string","description":"2-3 sentences","category":"research","source":"string","timeAgo":"string"},"news":[{"title":"string","description":"1-2 sentences","category":"product","source":"string","timeAgo":"string"},{"title":"string","description":"1-2 sentences","category":"open","source":"string","timeAgo":"string"},{"title":"string","description":"1-2 sentences","category":"safety","source":"string","timeAgo":"string"},{"title":"string","description":"1-2 sentences","category":"business","source":"string","timeAgo":"string"},{"title":"string","description":"1-2 sentences","category":"tools","source":"string","timeAgo":"string"},{"title":"string","description":"1-2 sentences","category":"research","source":"string","timeAgo":"string"}],"developments":[{"icon":"🤖","title":"string","description":"string","source":"string","bg":"rgba(91,106,247,0.12)"},{"icon":"🎯","title":"string","description":"string","source":"string","bg":"rgba(167,139,250,0.12)"},{"icon":"🌐","title":"string","description":"string","source":"string","bg":"rgba(56,189,248,0.12)"},{"icon":"🔒","title":"string","description":"string","source":"string","bg":"rgba(248,113,113,0.12)"},{"icon":"⚡","title":"string","description":"string","source":"string","bg":"rgba(52,211,153,0.12)"}],"ticker":["s1","s2","s3","s4","s5","s6","s7","s8"]}`,2000);
-    const data=parseJSON(raw);
-    cache=data;
-    renderFeat(data.featured);
-    renderNews(data.news||[]);
-    renderDevs(data.developments||[]);
-    setTicker(data.ticker||[]);
-    document.getElementById('upd').textContent='Updated '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-    genBriefing(data);
-  }catch(e){
-    console.warn('API unavailable, using cached data',e.message);
-    document.getElementById('upd').textContent='Cached · tap Refresh';
-  }
-  btn.classList.remove('spin');
-}
-
-function renderFeat(f){
-  if(!f)return;
-  document.getElementById('feat').innerHTML=`
-  <div class="fc" onclick="openSheet(${J(f.title)},${J(f.description)},${J(f.category)},${J(f.source)},${J(f.timeAgo)})">
-    <div class="fc-badge">⭐ Featured Story</div>
-    <div class="fc-title">${f.title}</div>
-    <div class="fc-desc">${f.description}</div>
-    <div class="fc-tap">
-      <div class="meta">
-        <span class="ms">${f.source}</span>
-        <span class="mt">${f.timeAgo}</span>
-        <span class="pl ${pc(f.category)}">${pl(f.category)}</span>
-      </div>
-      <div class="tap-hint">Read full story →</div>
-    </div>
-  </div>`;}
-
-function renderNews(news){
-  document.getElementById('news-list').innerHTML=news.map((n,i)=>`
-  <div class="nc" style="animation-delay:${i*.05}s" onclick="openSheet(${J(n.title)},${J(n.description)},${J(n.category)},${J(n.source)},${J(n.timeAgo)})">
-    <div class="nc-top">
-      <div class="nc-title">${n.title}</div>
-      <div class="nc-arr">→</div>
-    </div>
-    <div class="nc-desc">${n.description}</div>
-    <div class="nc-foot">
-      <span class="pl ${pc(n.category)}">${pl(n.category)}</span>
-      <span class="nc-src">${n.source}</span>
-      <span class="nc-time">${n.timeAgo}</span>
-    </div>
-  </div>`).join('');}
-
-function renderDevs(devs){
-  document.getElementById('dev-list').innerHTML=devs.map((d,i)=>`
-  <div class="dc" style="animation-delay:${i*.06}s" onclick="openSheet(${J(d.title)},${J(d.description)},'research',${J(d.source)},'Today')">
-    <div class="dc-ic" style="background:${d.bg||'rgba(91,106,247,0.12)'}">${d.icon}</div>
-    <div style="flex:1;min-width:0">
-      <div class="dc-title">${d.title}</div>
-      <div class="dc-desc">${d.description}</div>
-      <div class="dc-src">${d.source}</div>
-    </div>
-    <div style="color:var(--accent2);opacity:.4;font-size:.8rem;flex-shrink:0;align-self:center;">→</div>
-  </div>`).join('');}
-
-function setTicker(items){
-  if(!items.length)return;
-  const d=[...items,...items];
-  document.getElementById('tkr').innerHTML=d.map(t=>`<span class="ti"><span class="td"></span>${t}</span>`).join('');}
-
-async function genBriefing(data){
-  const titles=[data.featured?.title,...(data.news||[]).map(n=>n.title)].filter(Boolean).slice(0,5).join('; ');
-  const bc=document.getElementById('ask-brief');
-  bc.innerHTML='<div class="ty"><span></span><span></span><span></span></div>';
-  try{
-    const t=await claude(
-      `You are AIVerse News AI. Today is ${new Date().toDateString()}. Write for an AI product builder. Return ONLY HTML with <p> and <strong> tags.`,
-      `These are today's AI headlines: "${titles}". Write a 2-paragraph insightful briefing connecting the trends. No preamble.`,350);
-    bc.innerHTML=t.replace(/```html|```/g,'').trim();
-  }catch{
-    bc.innerHTML='<p><strong>AI is moving fast.</strong> Explore today\'s stories above and tap any card to read the full article.</p>';
-  }
-}
-
-// ── ASK ──────────────────────────────────────────────────────────
-async function doAsk(){
-  const inp=document.getElementById('askIn');
-  const q=inp?.value?.trim();if(!q)return;
-  const resp=document.getElementById('askResp');
-  resp.className='ask-resp show';
-  resp.innerHTML='<div class="ty"><span></span><span></span><span></span></div>';
-  inp.disabled=true;
-  const ctx=cache?`Today's headlines: ${[cache.featured?.title,...(cache.news||[]).map(n=>n.title)].filter(Boolean).join('; ')}.`:'';
-  try{
-    const t=await claude(
-      `You are AIVerse News AI. Today ${new Date().toDateString()}. ${ctx} Answer concisely in 2-3 sentences. Plain text.`,
-      q,300);
-    resp.innerHTML=t;
-  }catch{resp.innerHTML='Connection issue — please try again.';}
-  inp.disabled=false;inp.value='';
-}
-window.doAsk=doAsk;
-
-// ── JSON HELPER ──────────────────────────────────────────────────
-function J(v){return JSON.stringify(String(v||''));}
-
-// ── NEWSLETTERS ──────────────────────────────────────────────────
-const NL=[
-  {e:'⚡',n:'Techpresso',tag:'Daily',cat:'cat-daily',tclass:'pb',desc:'5-min daily. Read by 500K+ at OpenAI, Apple, Nvidia & Google. Best signal-to-noise of any free daily AI newsletter.',url:'https://dupple.com/techpresso',sub:'500K+ readers'},
-  {e:'📰',n:'The Rundown AI',tag:'Daily',cat:'',tclass:'pr',desc:"World's largest AI newsletter. 2M+ subscribers, 50% open rate. Covers launches, tools, tutorials every morning.",url:'https://www.therundown.ai/',sub:'2M+ subscribers'},
-  {e:'🚀',n:'Superhuman AI',tag:'Daily',cat:'',tclass:'po',desc:'"3 minutes a day" — 1.5M+ subscribers. Practical AI workflows, prompt tips, and tool comparisons for busy professionals.',url:'https://www.superhuman.ai/',sub:'1.5M+ subscribers'},
-  {e:'⚡',n:'TLDR AI',tag:'Daily',cat:'',tclass:'pr',desc:'Best free daily for developers & ML engineers. 1.25M+ subscribers. Technical research, tools, and engineering news.',url:'https://tldr.tech/ai',sub:'1.25M+ subscribers'},
-  {e:'📚',n:'The Batch — Andrew Ng',tag:'Weekly',cat:'',tclass:'pp',desc:'Benchmark weekly by DeepLearning.AI. "Letters from Andrew Ng" is the most-cited column in any AI newsletter.',url:'https://www.deeplearning.ai/the-batch/',sub:'DeepLearning.AI'},
-  {e:'🧪',n:'Import AI — Jack Clark',tag:'Weekly',cat:'',tclass:'ps',desc:'By Anthropic co-founder. Deep research, policy analysis, paper breakdowns & geopolitical AI framing.',url:'https://importai.substack.com/',sub:'116K+ subscribers'},
-  {e:'🏗️',n:"Ben's Bites",tag:'Weekly',cat:'',tclass:'po',desc:'Founder & builder lens. Less news, more interpretation — product launches, applied AI & the "wrapper vs. moat" debate.',url:'https://bensbites.com/',sub:'163K+ subscribers'},
-  {e:'🌐',n:'The Atlas — GenAI.Works',tag:'Biweekly',cat:'',tclass:'pt',desc:'Largest AI newsletter on LinkedIn — 3M+ readers. By Steve Nouri. Trusted by execs and independent builders alike.',url:'https://genai.works',sub:'3M+ LinkedIn readers'},
-  {e:'🔬',n:'Ahead of AI',tag:'Weekly',cat:'',tclass:'pr',desc:'By Sebastian Raschka. Deep LLM architecture dives. Best newsletter for understanding how frontier models are built.',url:'https://magazine.sebastianraschka.com/',sub:'189K+ subscribers'},
-  {e:'🎙️',n:'Latent Space',tag:'Weekly',cat:'',tclass:'pr',desc:'AI engineering newsletter & podcast. 200K+ subscribers. Production tradeoffs and AI lab research analysis.',url:'https://www.latent.space/',sub:'200K+ subscribers'},
-];
-document.getElementById('nl-list').innerHTML=NL.map((n,i)=>`
-  <a href="${n.url}" target="_blank" class="nlc" style="animation-delay:${i*.04}s">
-    <div class="nlc-em">${n.e}</div>
-    <div style="flex:1;min-width:0">
-      <div class="nlc-name">${n.n}</div>
-      <div class="nlc-meta">
-        <span class="pl ${n.tclass}" style="font-size:.6rem;padding:1px 7px">${n.tag} · Free</span>
-        <span class="nlc-sub">${n.sub}</span>
-      </div>
-      <div class="nlc-desc">${n.desc}</div>
-    </div>
-    <div class="nlc-arr">→</div>
-  </a>`).join('');
-
-// ── FALLBACK DATA ────────────────────────────────────────────────
-function showFallback(){
-  renderFeat({title:"Agentic AI Systems Enter Mass Production in 2026",description:"Leading AI labs including Anthropic, OpenAI, and Google DeepMind have pushed agentic AI from research into production. Enterprises are deploying multi-step autonomous agents for coding, data analysis, and customer workflows at unprecedented scale.",category:"research",source:"Multiple Sources",timeAgo:"Today"});
-  renderNews([
-    {title:"Open Source LLMs Close Gap with Frontier Models",description:"Meta, Mistral, and others release increasingly capable open-weights models challenging proprietary alternatives.",category:"open",source:"VentureBeat",timeAgo:"2h ago"},
-    {title:"AI Coding Agents Handle Full Feature Development",description:"GitHub Copilot, Cursor, and Claude Code now autonomously handle complete features with minimal human oversight.",category:"tools",source:"TechCrunch",timeAgo:"3h ago"},
-    {title:"AI Safety Alignment Research Accelerates",description:"Interpretability and alignment teams at major labs grow as capability development continues at pace.",category:"safety",source:"Import AI",timeAgo:"4h ago"},
-    {title:"Multimodal AI Reshapes Creative Industries",description:"Video, audio, and image generation tools become integral to design, media, and entertainment workflows globally.",category:"product",source:"The Batch",timeAgo:"5h ago"},
-    {title:"AI Hardware Startups Raise Record Funding",description:"Custom silicon entrants challenge NVIDIA as AI accelerator demand grows exponentially across cloud providers.",category:"business",source:"MIT Tech Review",timeAgo:"6h ago"},
-    {title:"Clinical AI Achieves Specialist-Level Diagnostics",description:"Radiology and pathology AI systems demonstrate specialist-grade accuracy across multi-site clinical trials.",category:"research",source:"TLDR AI",timeAgo:"8h ago"}
-  ]);
-  renderDevs([
-    {icon:"🤖",title:"Agentic AI in Enterprise Production",description:"Multi-step autonomous agents handle real-world tasks across Fortune 500 companies with minimal oversight.",source:"VentureBeat",bg:"rgba(91,106,247,0.12)"},
-    {icon:"🎯",title:"Reasoning via Inference-Time Compute",description:"Chain-of-thought scaling dramatically improves accuracy on complex math, science, and code problems.",source:"Import AI",bg:"rgba(167,139,250,0.12)"},
-    {icon:"🌐",title:"Multilingual AI Reaches Native Parity",description:"Leading models demonstrate near-native fluency across 100+ languages including low-resource ones.",source:"The Batch",bg:"rgba(56,189,248,0.12)"},
-    {icon:"🔒",title:"AI Safety Tooling Matures as Standard",description:"Constitutional AI, RLHF improvements, and red-teaming frameworks emerge as industry best practice.",source:"Anthropic Blog",bg:"rgba(248,113,113,0.12)"},
-    {icon:"⚡",title:"AI Code Generation Dominates Dev Workflows",description:"Over 50% of new code at major tech firms is AI-assisted; agents autonomously fix bugs and write tests.",source:"GitHub Blog",bg:"rgba(52,211,153,0.12)"}
-  ]);
-  setTicker(["Agentic AI deployed across Fortune 500 companies","Open source models challenge frontier proprietary leaders","Multimodal AI reshapes creative and media industries","AI safety researchers publish alignment breakthrough","Robotics foundation models enable general-purpose bots","AI code generation surpasses 50% at major tech firms","Reasoning models close gap on olympiad-level math","Clinical AI achieves specialist-level diagnostics"]);
-  document.getElementById('upd').textContent='Cached · tap Refresh';
-}
-
-// ── INIT ─────────────────────────────────────────────────────────
-showFallback();
+// ── FALLBACK + INIT ──────────────────────────────────────────────
+renderFeat({title:"Agentic AI Systems Enter Mass Production in 2026",description:"Leading AI labs including Anthropic, OpenAI, and Google DeepMind have pushed agentic AI from research into production. Enterprises are deploying multi-step autonomous agents for coding, data analysis, and customer workflows at unprecedented scale.",category:"research",source:"Multiple Sources",timeAgo:"Today"});
+renderNews([
+  {title:"Open Source LLMs Close Gap with Frontier Models",description:"Meta, Mistral, and others release increasingly capable open-weights models that are challenging proprietary alternatives across benchmarks.",category:"open",source:"VentureBeat",timeAgo:"2h ago"},
+  {title:"AI Coding Agents Handle Full Feature Development",description:"GitHub Copilot, Cursor, and Claude Code now autonomously handle complete features with minimal human oversight.",category:"tools",source:"TechCrunch",timeAgo:"3h ago"},
+  {title:"AI Safety Alignment Research Accelerates",description:"Interpretability and alignment teams at major labs grow as capability development continues at pace globally.",category:"safety",source:"Import AI",timeAgo:"4h ago"},
+  {title:"Multimodal AI Reshapes Creative Industries",description:"Video, audio, and image generation tools are becoming integral to design, media, and entertainment workflows.",category:"product",source:"The Batch",timeAgo:"5h ago"},
+  {title:"AI Hardware Startups Raise Record Funding",description:"Custom silicon entrants are challenging NVIDIA as AI accelerator demand grows exponentially across cloud providers.",category:"business",source:"MIT Tech Review",timeAgo:"6h ago"},
+  {title:"Clinical AI Achieves Specialist-Level Diagnostics",description:"Radiology and pathology AI systems demonstrate specialist-grade accuracy across multi-site clinical trials.",category:"research",source:"TLDR AI",timeAgo:"8h ago"}
+]);
+renderDevs([
+  {icon:"🤖",title:"Agentic AI in Enterprise Production",description:"Multi-step autonomous agents handle real-world tasks across Fortune 500 companies with minimal oversight.",source:"VentureBeat",bg:"rgba(91,106,247,0.12)"},
+  {icon:"🎯",title:"Reasoning via Inference-Time Compute",description:"Chain-of-thought scaling dramatically improves accuracy on complex math, science, and code problems.",source:"Import AI",bg:"rgba(167,139,250,0.12)"},
+  {icon:"🌐",title:"Multilingual AI Reaches Native Parity",description:"Leading models demonstrate near-native fluency across 100+ languages including low-resource ones.",source:"The Batch",bg:"rgba(56,189,248,0.12)"},
+  {icon:"🔒",title:"AI Safety Tooling Matures as Standard",description:"Constitutional AI, RLHF improvements, and red-teaming frameworks emerge as industry best practice.",source:"Anthropic Blog",bg:"rgba(248,113,113,0.12)"},
+  {icon:"⚡",title:"AI Code Generation Dominates Dev Workflows",description:"Over 50% of new code at major tech firms is AI-assisted; agents autonomously fix bugs and write tests.",source:"GitHub Blog",bg:"rgba(52,211,153,0.12)"}
+]);
+setTicker(["Agentic AI deployed across Fortune 500 companies","Open source models challenge frontier leaders","Multimodal AI reshapes creative industries","AI safety researchers publish alignment breakthrough","Robotics foundation models enable general-purpose bots","AI code generation surpasses 50% at major tech firms","Reasoning models close gap on olympiad-level math","Clinical AI achieves specialist-level diagnostics"]);
 loadNews();
 </script>
 </body>
