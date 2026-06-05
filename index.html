@@ -275,6 +275,34 @@ function store(obj) {
   return id;
 }
 
+// ── SOURCE URL MAP ──────────────────────────────────────────────
+const SRC_URLS = {
+  'ventu':   'https://venturebeat.com/category/ai/',
+  'techcr':  'https://techcrunch.com/category/artificial-intelligence/',
+  'mit':     'https://www.technologyreview.com/topic/artificial-intelligence/',
+  'the bat': 'https://www.deeplearning.ai/the-batch/',
+  'import':  'https://importai.substack.com/',
+  'tldr':    'https://tldr.tech/ai',
+  'rundown': 'https://www.therundown.ai/',
+  'superhu': 'https://www.superhuman.ai/',
+  'github':  'https://github.blog/',
+  'anthrop': 'https://www.anthropic.com/news',
+  'openai':  'https://openai.com/news',
+  'google':  'https://deepmind.google/discover/blog/',
+  'meta':    'https://ai.meta.com/blog/',
+  'hugging': 'https://huggingface.co/blog',
+  'latent':  'https://www.latent.space/',
+};
+function getSourceUrl(source, providedUrl) {
+  if (providedUrl && providedUrl.startsWith('http')) return providedUrl;
+  const s = (source||'').toLowerCase();
+  for (const [k,v] of Object.entries(SRC_URLS)) {
+    if (s.includes(k)) return v;
+  }
+  // Build a Google News search URL as last resort
+  return 'https://news.google.com/search?q=' + encodeURIComponent((source||'AI') + ' artificial intelligence');
+}
+
 // ── SHEET ────────────────────────────────────────────────────────
 const ov    = document.getElementById('ov');
 const sheet = document.getElementById('sheet');
@@ -290,7 +318,7 @@ function openSheet(id) {
   ov.classList.add('on');
   sheet.classList.add('on');
   document.body.style.overflow = 'hidden';
-  fetchArticle(item.title, item.description, item.category);
+  fetchArticle(item.title, item.description, item.category, item.source, item.url);
 }
 function closeSheet() {
   ov.classList.remove('on');
@@ -300,7 +328,9 @@ function closeSheet() {
 ov.addEventListener('click', closeSheet);
 shClose.addEventListener('click', closeSheet);
 
-async function fetchArticle(title, desc, category) {
+async function fetchArticle(title, desc, category, source, providedUrl) {
+  const readUrl = getSourceUrl(source, providedUrl);
+  const linkBtn = `<a href="${readUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:rgba(91,106,247,0.14);border:1px solid rgba(91,106,247,0.28);color:var(--ac2);border-radius:9px;padding:10px 16px;font-family:'DM Mono',monospace;font-size:.75rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(91,106,247,0.24)'" onmouseout="this.style.background='rgba(91,106,247,0.14)'">🔗 Read full article on ${source} →</a>`;
   try {
     const text = await claude(
       `You are AIVerse News, an AI journalist. Today is ${new Date().toDateString()}. Write an engaging news article. Return ONLY plain HTML using only <p>, <strong>, <h3> tags — nothing else, no markdown, no backticks.`,
@@ -315,9 +345,9 @@ Para 3 — Technical or business details, real players.
 Para 4 — Impact for builders/enterprises and what to watch next.
 
 Be specific and insightful. Reference real companies and AI systems.`, 700);
-    document.getElementById('sh-body').innerHTML = text.replace(/```html|```/g,'').trim();
+    document.getElementById('sh-body').innerHTML = text.replace(/```html|```/g,'').trim() + linkBtn;
   } catch(e) {
-    document.getElementById('sh-body').innerHTML = `<p>${desc}</p><p>Full article unavailable. Check the sources section for the latest coverage.</p>`;
+    document.getElementById('sh-body').innerHTML = `<p>${desc}</p>` + linkBtn;
   }
 }
 
@@ -355,7 +385,7 @@ function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'
 // ── RENDER ───────────────────────────────────────────────────────
 function renderFeat(f) {
   if (!f) return;
-  const id = store({ title: f.title, description: f.description, category: f.category, source: f.source, timeAgo: f.timeAgo });
+  const id = store({ title: f.title, description: f.description, category: f.category, source: f.source, timeAgo: f.timeAgo, url: f.url||'' });
   document.getElementById('feat').innerHTML = `
   <div class="fc" data-id="${id}">
     <div class="fc-badge">⭐ Featured Story</div>
@@ -375,7 +405,7 @@ function renderFeat(f) {
 
 function renderNews(news) {
   document.getElementById('news-list').innerHTML = news.map((n,i) => {
-    const id = store({ title: n.title, description: n.description, category: n.category, source: n.source, timeAgo: n.timeAgo });
+    const id = store({ title: n.title, description: n.description, category: n.category, source: n.source, timeAgo: n.timeAgo, url: n.url||'' });
     return `<div class="nc" data-id="${id}" style="animation-delay:${i*.05}s">
       <div class="nc-row"><div class="nc-title">${esc(n.title)}</div><div class="arr">→</div></div>
       <div class="nc-desc">${esc(n.description)}</div>
@@ -393,7 +423,7 @@ function renderNews(news) {
 
 function renderDevs(devs) {
   document.getElementById('dev-list').innerHTML = devs.map((d,i) => {
-    const id = store({ title: d.title, description: d.description, category: 'research', source: d.source, timeAgo: 'Today' });
+    const id = store({ title: d.title, description: d.description, category: 'research', source: d.source, timeAgo: 'Today', url: d.url||'' });
     return `<div class="dc" data-id="${id}" style="animation-delay:${i*.06}s">
       <div class="dc-ic" style="background:${d.bg||'rgba(91,106,247,0.12)'}">${d.icon}</div>
       <div style="flex:1;min-width:0">
@@ -424,7 +454,7 @@ async function loadNews() {
     const raw = await claude(
       `You are an AI news curator. Today is ${new Date().toDateString()}. Return ONLY a raw JSON object. Start with { end with }. No markdown, no backticks, no explanation whatsoever.`,
       `Return this exact JSON structure with real current AI news:
-{"featured":{"title":"...","description":"2-3 sentences about the most important AI development today","category":"research","source":"source name","timeAgo":"X hours ago"},"news":[{"title":"...","description":"1-2 sentences","category":"product","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"open","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"safety","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"business","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"tools","source":"...","timeAgo":"..."},{"title":"...","description":"1-2 sentences","category":"research","source":"...","timeAgo":"..."}],"developments":[{"icon":"🤖","title":"...","description":"1-2 sentences","source":"...","bg":"rgba(91,106,247,0.12)"},{"icon":"🎯","title":"...","description":"...","source":"...","bg":"rgba(167,139,250,0.12)"},{"icon":"🌐","title":"...","description":"...","source":"...","bg":"rgba(56,189,248,0.12)"},{"icon":"🔒","title":"...","description":"...","source":"...","bg":"rgba(248,113,113,0.12)"},{"icon":"⚡","title":"...","description":"...","source":"...","bg":"rgba(52,211,153,0.12)"}],"ticker":["h1","h2","h3","h4","h5","h6","h7","h8"]}`, 2000);
+{"featured":{"title":"...","description":"2-3 sentences about the most important AI development today","category":"research","source":"source name","timeAgo":"X hours ago","url":"https://..."},"news":[{"title":"...","description":"1-2 sentences","category":"product","source":"...","timeAgo":"...","url":"https://..."},{"title":"...","description":"1-2 sentences","category":"open","source":"...","timeAgo":"...","url":"https://..."},{"title":"...","description":"1-2 sentences","category":"safety","source":"...","timeAgo":"...","url":"https://..."},{"title":"...","description":"1-2 sentences","category":"business","source":"...","timeAgo":"...","url":"https://..."},{"title":"...","description":"1-2 sentences","category":"tools","source":"...","timeAgo":"...","url":"https://..."},{"title":"...","description":"1-2 sentences","category":"research","source":"...","timeAgo":"...","url":"https://..."}],"developments":[{"icon":"🤖","title":"...","description":"1-2 sentences","source":"...","bg":"rgba(91,106,247,0.12)"},{"icon":"🎯","title":"...","description":"...","source":"...","bg":"rgba(167,139,250,0.12)"},{"icon":"🌐","title":"...","description":"...","source":"...","bg":"rgba(56,189,248,0.12)"},{"icon":"🔒","title":"...","description":"...","source":"...","bg":"rgba(248,113,113,0.12)"},{"icon":"⚡","title":"...","description":"...","source":"...","bg":"rgba(52,211,153,0.12)"}],"ticker":["h1","h2","h3","h4","h5","h6","h7","h8"]}`, 2000);
     const data = parseJ(raw);
     cache = data;
     renderFeat(data.featured);
